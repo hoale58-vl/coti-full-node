@@ -52,7 +52,7 @@ for i in $(seq 1 $NODES); do
       - --port=$NODE_P2P_PORT
       - --identity=cotiagents-node-$i
       - --verbosity=3
-      - --datadir=/execution/node$i
+      - --datadir=/execution
       - --syncmode=full
       - --ws
       - --ws.port=$NODE_WS_PORT
@@ -86,4 +86,4 @@ done
 
 echo "✅ docker-compose.yml created!"
 
-docker compose up -d
+# docker compose up -d

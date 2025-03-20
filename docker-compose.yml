@@ -1,10 +1,11 @@
 services:
+
   coti-full-node-genesis-1:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-1
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-1:/execution
+      - ./execution/node-1/:/execution
     logging:
       driver: "json-file"
       options:
@@ -42,7 +43,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8545:8545"
@@ -59,12 +60,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-2:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-2
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-2:/execution
+      - ./execution/node-2/:/execution
     logging:
       driver: "json-file"
       options:
@@ -102,7 +104,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8546:8546"
@@ -119,12 +121,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-3:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-3
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-3:/execution
+      - ./execution/node-3/:/execution
     logging:
       driver: "json-file"
       options:
@@ -162,7 +165,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8547:8547"
@@ -179,12 +182,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-4:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-4
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-4:/execution
+      - ./execution/node-4/:/execution
     logging:
       driver: "json-file"
       options:
@@ -222,7 +226,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8548:8548"
@@ -239,12 +243,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-5:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-5
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-5:/execution
+      - ./execution/node-5/:/execution
     logging:
       driver: "json-file"
       options:
@@ -282,7 +287,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8549:8549"
@@ -299,12 +304,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-6:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-6
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-6:/execution
+      - ./execution/node-6/:/execution
     logging:
       driver: "json-file"
       options:
@@ -342,7 +348,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8550:8550"
@@ -359,12 +365,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-7:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-7
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-7:/execution
+      - ./execution/node-7/:/execution
     logging:
       driver: "json-file"
       options:
@@ -402,7 +409,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8551:8551"
@@ -419,12 +426,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-8:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-8
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-8:/execution
+      - ./execution/node-8/:/execution
     logging:
       driver: "json-file"
       options:
@@ -462,7 +470,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8552:8552"
@@ -479,12 +487,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-9:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-9
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-9:/execution
+      - ./execution/node-9/:/execution
     logging:
       driver: "json-file"
       options:
@@ -522,7 +531,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8553:8553"
@@ -539,12 +548,13 @@ services:
       options:
         max-size: "50m"
         max-file: "5"
+
   coti-full-node-genesis-10:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-10
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-10:/execution
+      - ./execution/node-10/:/execution
     logging:
       driver: "json-file"
       options:
@@ -582,7 +592,7 @@ services:
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:113.23.114.95
     ports:
       - "8554:8554"
