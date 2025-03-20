@@ -11,17 +11,6 @@ echo "ℹ️ FULLNODE_EXT_IP="$FULLNODE_EXT_IP
 # Init docker-compose.yml
 cat <<EOF > docker-compose.yml
 services:
-  coti-full-node-genesis:
-    image: coti/full-node:1.1.3
-    container_name: coti-full-node-genesis
-    command: --datadir=/execution init /coti-genesis/genesis.json
-    volumes:
-      - ./execution/:/execution
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "1"
 EOF
 
 # Loop
@@ -31,6 +20,17 @@ for i in $(seq 1 $NODES); do
   NODE_P2P_PORT=$((BASE_P2P_PORT - 1 + i))
 
   cat <<EOF >> docker-compose.yml
+  coti-full-node-genesis-$i:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-$i:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-$i:
     image: coti/full-node:1.1.3
@@ -74,7 +74,7 @@ for i in $(seq 1 $NODES); do
         condition: service_completed_successfully
     volumes:
       - ./execution/node-$i:/execution/
-      - ./execution/keystore-$i:/execution/keystore
+      - ./execution/node-$i/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
@@ -83,6 +83,6 @@ for i in $(seq 1 $NODES); do
 EOF
 done
 
-echo "✅ docker-compose.yml created!"
+echo "✅ docker compose.yml created!"
 
 docker-compose up -d
