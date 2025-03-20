@@ -1,10 +1,10 @@
 services:
-  coti-full-node-genesis:
+  coti-full-node-genesis-1:
     image: coti/full-node:1.1.3
-    container_name: coti-full-node-genesis
+    container_name: coti-full-node-genesis-1
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/:/execution
+      - ./execution/node-1:/execution
     logging:
       driver: "json-file"
       options:
@@ -49,16 +49,27 @@ services:
       - "8446:8446"
       - "7400:7400"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-1:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-1:/execution/
-      - ./execution/keystore-1:/execution/keystore
+      - ./execution/node-1/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-2:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-2
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-2:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-2:
     image: coti/full-node:1.1.3
@@ -98,16 +109,27 @@ services:
       - "8447:8447"
       - "7401:7401"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-2:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-2:/execution/
-      - ./execution/keystore-2:/execution/keystore
+      - ./execution/node-2/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-3:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-3
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-3:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-3:
     image: coti/full-node:1.1.3
@@ -147,16 +169,27 @@ services:
       - "8448:8448"
       - "7402:7402"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-3:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-3:/execution/
-      - ./execution/keystore-3:/execution/keystore
+      - ./execution/node-3/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-4:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-4
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-4:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-4:
     image: coti/full-node:1.1.3
@@ -196,16 +229,27 @@ services:
       - "8449:8449"
       - "7403:7403"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-4:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-4:/execution/
-      - ./execution/keystore-4:/execution/keystore
+      - ./execution/node-4/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-5:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-5
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-5:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-5:
     image: coti/full-node:1.1.3
@@ -245,16 +289,27 @@ services:
       - "8450:8450"
       - "7404:7404"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-5:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-5:/execution/
-      - ./execution/keystore-5:/execution/keystore
+      - ./execution/node-5/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-6:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-6
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-6:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-6:
     image: coti/full-node:1.1.3
@@ -294,16 +349,27 @@ services:
       - "8451:8451"
       - "7405:7405"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-6:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-6:/execution/
-      - ./execution/keystore-6:/execution/keystore
+      - ./execution/node-6/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-7:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-7
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-7:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-7:
     image: coti/full-node:1.1.3
@@ -343,16 +409,27 @@ services:
       - "8452:8452"
       - "7406:7406"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-7:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-7:/execution/
-      - ./execution/keystore-7:/execution/keystore
+      - ./execution/node-7/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-8:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-8
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-8:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-8:
     image: coti/full-node:1.1.3
@@ -392,16 +469,27 @@ services:
       - "8453:8453"
       - "7407:7407"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-8:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-8:/execution/
-      - ./execution/keystore-8:/execution/keystore
+      - ./execution/node-8/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-9:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-9
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-9:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-9:
     image: coti/full-node:1.1.3
@@ -441,16 +529,27 @@ services:
       - "8454:8454"
       - "7408:7408"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-9:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-9:/execution/
-      - ./execution/keystore-9:/execution/keystore
+      - ./execution/node-9/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:
         max-size: "50m"
         max-file: "5"
+  coti-full-node-genesis-10:
+    image: coti/full-node:1.1.3
+    container_name: coti-full-node-genesis-10
+    command: --datadir=/execution init /coti-genesis/genesis.json
+    volumes:
+      - ./execution/node-10:/execution
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "1"
 
   coti-full-node-10:
     image: coti/full-node:1.1.3
@@ -490,11 +589,11 @@ services:
       - "8455:8455"
       - "7409:7409"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-10:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-10:/execution/
-      - ./execution/keystore-10:/execution/keystore
+      - ./execution/node-10/keystore:/execution/keystore
     logging:
       driver: "json-file"
       options:

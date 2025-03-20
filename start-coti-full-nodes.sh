@@ -20,12 +20,13 @@ for i in $(seq 1 $NODES); do
   NODE_P2P_PORT=$((BASE_P2P_PORT - 1 + i))
 
   cat <<EOF >> docker-compose.yml
+
   coti-full-node-genesis-$i:
     image: coti/full-node:1.1.3
     container_name: coti-full-node-genesis-$i
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
-      - ./execution/node-$i:/execution
+      - ./execution/node-$i/:/execution
     logging:
       driver: "json-file"
       options:
@@ -63,7 +64,7 @@ for i in $(seq 1 $NODES); do
       - --metrics.addr=0.0.0.0
       - --rpc.allow-unprotected-txs=true
       - --miner.gasprice=5000000
-      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400
+      - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:$FULLNODE_EXT_IP
     ports:
       - "${NODE_HTTP_PORT}:${NODE_HTTP_PORT}"
