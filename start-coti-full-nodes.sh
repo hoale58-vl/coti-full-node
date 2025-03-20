@@ -49,7 +49,7 @@ for i in $(seq 1 $NODES); do
       - --http.vhosts=*
       - --http.addr=0.0.0.0
       - --http.port=$BASE_HTTP_PORT
-      - --port=$BASE_P2P_PORT
+      - --port=$NODE_P2P_PORT
       - --identity=cotiagents-node-$i
       - --verbosity=3
       - --datadir=/execution
@@ -69,7 +69,7 @@ for i in $(seq 1 $NODES); do
     ports:
       - "${NODE_HTTP_PORT}:${BASE_HTTP_PORT}"
       - "${NODE_WS_PORT}:${BASE_WS_PORT}"
-      - "${NODE_P2P_PORT}:${BASE_P2P_PORT}"
+      - "${NODE_P2P_PORT}:${NODE_P2P_PORT}"
     depends_on:
       coti-full-node-genesis-$i:
         condition: service_completed_successfully
