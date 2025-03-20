@@ -22,7 +22,7 @@ for i in $(seq 1 $NODES); do
   cat <<EOF >> docker-compose.yml
   coti-full-node-genesis-$i:
     image: coti/full-node:1.1.3
-    container_name: coti-full-node-genesis
+    container_name: coti-full-node-genesis-$i
     command: --datadir=/execution init /coti-genesis/genesis.json
     volumes:
       - ./execution/node-$i:/execution
@@ -70,7 +70,7 @@ for i in $(seq 1 $NODES); do
       - "${NODE_WS_PORT}:${NODE_WS_PORT}"
       - "${NODE_P2P_PORT}:${NODE_P2P_PORT}"
     depends_on:
-      coti-full-node-genesis:
+      coti-full-node-genesis-$i:
         condition: service_completed_successfully
     volumes:
       - ./execution/node-$i:/execution/
@@ -83,6 +83,6 @@ for i in $(seq 1 $NODES); do
 EOF
 done
 
-echo "✅ docker compose.yml created!"
+echo "✅ docker-compose.yml created!"
 
-docker-compose up -d
+docker compose up -d
