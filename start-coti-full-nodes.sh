@@ -48,14 +48,14 @@ for i in $(seq 1 $NODES); do
       - --http.corsdomain=*
       - --http.vhosts=*
       - --http.addr=0.0.0.0
-      - --http.port=$NODE_HTTP_PORT
-      - --port=$NODE_P2P_PORT
+      - --http.port=$BASE_HTTP_PORT
+      - --port=$BASE_P2P_PORT
       - --identity=cotiagents-node-$i
       - --verbosity=3
       - --datadir=/execution
       - --syncmode=full
       - --ws
-      - --ws.port=$NODE_WS_PORT
+      - --ws.port=$BASE_WS_PORT
       - --ws.addr=0.0.0.0
       - --ws.origins=*
       - --ws.api=web3,eth
@@ -67,9 +67,9 @@ for i in $(seq 1 $NODES); do
       - --bootnodes=enode://8c14ae1db71cc9796bf04cf3cc5508291621bc8b9c4c80d4d7b79d8e4b33eadcfc2298242362443fd1317c5ac887dae8e8fe9c551d7792f2bc2e7177978f730a@147.135.77.48:7400,enode://820748e65666a7444199808ecbe80f4133fa9faa7618520eb6577466336daef7aa40910a2d03dd93766ccb7b93fecdfd1a9ff32e01217235fddc3c990928fa16@63.176.21.19:7400
       - --nat=extip:$FULLNODE_EXT_IP
     ports:
-      - "${NODE_HTTP_PORT}:${NODE_HTTP_PORT}"
-      - "${NODE_WS_PORT}:${NODE_WS_PORT}"
-      - "${NODE_P2P_PORT}:${NODE_P2P_PORT}"
+      - "${NODE_HTTP_PORT}:${BASE_HTTP_PORT}"
+      - "${NODE_WS_PORT}:${BASE_WS_PORT}"
+      - "${NODE_P2P_PORT}:${BASE_P2P_PORT}"
     depends_on:
       coti-full-node-genesis-$i:
         condition: service_completed_successfully
@@ -86,4 +86,4 @@ done
 
 echo "✅ docker-compose.yml created!"
 
-# docker compose up -d
+docker compose up -d
